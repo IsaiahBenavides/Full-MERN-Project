@@ -1,6 +1,6 @@
 import * as usersAPI from './users-api'
 
-export async function singUp(userData) {
-    const token = await usersAPI.singUp(userData);
+export async function signUp(userData) {
+    const token = await usersAPI.signUp(userData);
     return token;
 }

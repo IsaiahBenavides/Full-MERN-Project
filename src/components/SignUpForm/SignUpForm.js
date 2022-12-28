@@ -6,7 +6,7 @@ import {
   Paper,
   withStyles,
 } from "@material-ui/core";
-import { singUp } from "../../utilities/users-service";
+import { signUp } from "../../utilities/users-service";
 
 const styles = (theme) => ({
   TextField: {
@@ -56,7 +56,7 @@ class SingUpForm extends Component {
         const formData = {...this.state};
         delete formData.error;
         delete formData.confirm;
-        const user = await singUp(formData)
+        const user = await signUp(formData)
         console.log(user)
     } catch {
         this.setState({ error: 'Sign up failed - Try Again' });
