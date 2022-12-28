@@ -4,7 +4,7 @@ const BASE_URL = '/api/users';
 export async function signUp(userData) {
     const res = await fetch(BASE_URL, {
         method: 'POST',
-        headers: { 'Content-type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData)
     });
     if (res.ok) {
