@@ -13,13 +13,13 @@ function App() {
     <div className="App">
       {user ? (
         <>
-        <NavBar />
+        <NavBar name={user.name} setUser={setUser} />
           <Routes>
             <Route path="/home" element={<HomePage />} />
           </Routes>
         </>
       ) : (
-        <AuthPage />
+        <AuthPage setUser={setUser} />
       )}
     </div>
   );
