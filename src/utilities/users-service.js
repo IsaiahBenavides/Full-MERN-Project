@@ -1,4 +1,4 @@
-import * as usersAPI from "./users-api";
+import * as usersAPI from "./users-api.js";
 
 export async function signUp(userData) {
   const token = await usersAPI.signUp(userData);

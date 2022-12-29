@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
-import * as usersService from "../../utilities/users-service";
+import * as usersService from "../../utilities/users-service.js";
 
-import useStyles from "./styles";
+import useStyles from "./styles.js";
 
 export default function LogInForm({ setUser }) {
   const [credentials, setCredentials] = useState({

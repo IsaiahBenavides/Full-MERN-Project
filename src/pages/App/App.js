@@ -1,11 +1,12 @@
 import "./App.css";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { getUser } from '../../utilities/users-service'
+import { getUser } from '../../utilities/users-service.js'
 
-import AuthPage from "../AuthPage/AuthPage";
-import HomePage from "../HomePage/HomePage";
-import NavBar from "../../components/NavBar";
+import AuthPage from "../AuthPage/AuthPage.js";
+import HomePage from "../HomePage/HomePage.js";
+import NavBar from "../../components/NavBar.js";
+import NewPost from "../NewPost.js/NewPost.js";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -16,6 +17,7 @@ function App() {
         <NavBar name={user.name} setUser={setUser} />
           <Routes>
             <Route path="/home" element={<HomePage />} />
+            <Route path="/newpost" element={<NewPost />} />
           </Routes>
         </>
       ) : (

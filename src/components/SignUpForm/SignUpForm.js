@@ -6,7 +6,7 @@ import {
   Paper,
   withStyles,
 } from "@material-ui/core";
-import { signUp } from "../../utilities/users-service";
+import { signUp } from "../../utilities/users-service.js";
 
 const styles = (theme) => ({
   TextField: {
