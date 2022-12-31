@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../../models/users");
 const bcrypt = require('bcrypt')
 
+
 module.exports = {
   create,
   login,
@@ -28,6 +29,7 @@ async function login(req, res) {
     res.status(400).json(error);
   }
 }
+
 
 function createJWT(user) {
   return jwt.sign({ user }, process.env.SECRET, { expiresIn: "24h" });

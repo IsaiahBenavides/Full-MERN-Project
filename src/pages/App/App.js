@@ -1,7 +1,9 @@
 import "./App.css";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getUser } from '../../utilities/users-service.js'
+import { useDispatch } from "react-redux";
+
 
 import AuthPage from "../AuthPage/AuthPage.js";
 import HomePage from "../HomePage/HomePage.js";
@@ -10,6 +12,11 @@ import NewPost from "../NewPost.js/NewPost.js";
 
 function App() {
   const [user, setUser] = useState(getUser());
+
+
+
+
+
   return (
     <div className="App">
       {user ? (
