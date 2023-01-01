@@ -6,8 +6,12 @@ Wireframes:
 ![Wireframes](images/MERNProj-WebPageWireFrames.jpg)
 
 ERD:
+
 Sign Up / Log In
 ![ERD](images/MERNProj-SignUp&LogInERD.jpg)
+
+Post Actions
+![Posts](images/MERNProj-PostActionsERD.jpg)
 
 Link to Render deploy: 
 https://fullmernproject.onrender.com
