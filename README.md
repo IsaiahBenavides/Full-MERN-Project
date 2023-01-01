@@ -6,7 +6,7 @@ Wireframes:
 
 
 ERD:
-![ERD]("./images/MERNProj-SignUp&LogInERD.jpg")
+![ERD]("images/MERNProj-SignUp&LogInERD.jpg")
 
 Link to Render deploy: 
 https://fullmernproject.onrender.com
