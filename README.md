@@ -6,7 +6,7 @@ Wireframes:
 
 
 ERD:
-![ERD]("C:\Users\Benav\Pictures\MERNProj-SignUp&LogInERD.drawio")
+![ERD]("C:\Users\Benav\Pictures\MERNProj-SignUp&LogInERD.jpg")
 
 Link to Render deploy: 
 https://fullmernproject.onrender.com
