@@ -6,6 +6,7 @@ Wireframes:
 ![Wireframes](images/MERNProj-WebPageWireFrames.jpg)
 
 ERD:
+Sign Up / Log In
 ![ERD](images/MERNProj-SignUp&LogInERD.jpg)
 
 Link to Render deploy: 
