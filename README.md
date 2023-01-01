@@ -6,7 +6,7 @@ Wireframes:
 
 
 ERD:
-![ERD]("Full-MERN-App\client\images\MERNProj-SignUp&LogInERD.jpg")
+![ERD]("https://raw.githubusercontent.com/IsaiahBenavides/Full-MERN-Project/master/images/MERNProj-SignUp%26LogInERD.jpg")
 
 Link to Render deploy: 
 https://fullmernproject.onrender.com
