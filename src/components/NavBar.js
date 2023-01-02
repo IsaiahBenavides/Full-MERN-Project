@@ -1,3 +1,4 @@
+import { Container } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 import * as userService from '../utilities/users-service.js'
@@ -8,11 +9,13 @@ export default function NavBar ({ name, setUser }) {
         setUser(null)
     }
     return(
-        <nav>
+        <Container>
             <Link to="/home">Home</Link>
-            <Link to="/newpost">New Post</Link>
-            &nbsp;&nbsp;<span>Welcome, {name}</span>
+            <Link to="/createpost">New Post</Link>
+            &nbsp;&nbsp;
+            <span>Welcome, {name}
             &nbsp;&nbsp;<Link to='' onClick={handleLogOut}>Log Out</Link>
-        </nav>
+            </span>
+        </Container>
     )
 }

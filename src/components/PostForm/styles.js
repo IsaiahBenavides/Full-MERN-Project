@@ -7,12 +7,17 @@ export default makeStyles((theme) => ({
     },
   },
   paper: {
+    margin: 15,
     padding: theme.spacing(2),
+    backgroundColor: "#b6cc76",
+        border: "solid 5px #768c3a",
+        margin: "20px"
   },
   form: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    backgroundColor: "#89cc7c",
   },
   fileInput: {
     width: '97%',

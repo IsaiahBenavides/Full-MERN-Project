@@ -3,18 +3,23 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getUser } from '../../utilities/users-service.js'
 import { useDispatch } from "react-redux";
+import * as postAction from "../../utilities/posts-api";
 
 
 import AuthPage from "../AuthPage/AuthPage.js";
 import HomePage from "../HomePage/HomePage.js";
 import NavBar from "../../components/NavBar.js";
-import NewPost from "../NewPost.js/NewPost.js";
+import CreatePost from "../CreatePost/CreatePost.js";
 
 function App() {
   const [user, setUser] = useState(getUser());
+  const [currentId, setCurrentId] = useState(null);
 
+  const dispatch = useDispatch();
 
-
+  // useEffect(() => {
+  //     dispatch(postAction.getPosts());
+  // }, [dispatch])
 
 
   return (
@@ -23,8 +28,8 @@ function App() {
         <>
         <NavBar name={user.name} setUser={setUser} />
           <Routes>
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/newpost" element={<NewPost />} />
+            <Route path="/home" element={<HomePage setCurrentId={setCurrentId} />} />
+            <Route path="/createpost" element={<CreatePost currentId={currentId} setCurrentId={setCurrentId} />} />
           </Routes>
         </>
       ) : (

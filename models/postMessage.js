@@ -10,17 +10,19 @@ const postSchema = new Schema({
   likeCount: {
     type: Number,
     default: 0,
-  },
-  createdAt: {
-    type: Date,
-    default: new Date(),
-  },
+  }
+},{
+  timestamps: true,
+  toJSON: {
+    virtuals: true
+  }
 });
 
-const PostMessage = mongoose.model("PostMessage", postSchema);
 
-postSchema.methods.createPost = async function (req) {
-//   WHAT THE HELL DO I PUT HERE THO?????
+postSchema.methods.createPost = async function () {
+  const post = this
+  console.log(post)
+  return post.save()
 };
 
-module.export = PostMessage;
+module.exports = mongoose.model("PostMessage", postSchema);
