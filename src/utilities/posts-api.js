@@ -10,5 +10,5 @@ export function updatePost(currentId, postData) {
 }
 
 export function getPosts() {
-    return sendRequest(`${BASE_URL}/createposts`, "GET")
+    return sendRequest(`${BASE_URL}/createpost`, "GET")
 }
