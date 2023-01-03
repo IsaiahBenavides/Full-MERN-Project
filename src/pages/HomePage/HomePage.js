@@ -1,7 +1,6 @@
 import Posts from "../../components/Posts/Posts.js";
 
 
-
 export default function HomePage() {
 
 

@@ -7,10 +7,6 @@ const postSchema = new Schema({
   creator: String,
   tags: [String],
   selectedFile: String,
-  likeCount: {
-    type: Number,
-    default: 0,
-  }
 },{
   timestamps: true,
   toJSON: {
@@ -19,10 +15,5 @@ const postSchema = new Schema({
 });
 
 
-postSchema.methods.createPost = async function () {
-  const post = this
-  console.log(post)
-  return post.save()
-};
 
 module.exports = mongoose.model("PostMessage", postSchema);

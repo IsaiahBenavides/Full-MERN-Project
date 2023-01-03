@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import * as postAction from "../../utilities/posts-api";
 
 import useStyles from "./styles.js";
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
-    creator: "",
     title: "",
     message: "",
+    creator: "",
     tags: "",
     selectedFile: "",
   });
@@ -18,7 +18,6 @@ const Form = ({ currentId, setCurrentId }) => {
     currentId ? state.posts.find((p) => p._id === currentId) : null
   );
   const classes = useStyles();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (post) setPostData(post);
@@ -27,11 +26,9 @@ const Form = ({ currentId, setCurrentId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentId) {
-      // dispatch(postAction.updatePost(currentId, postData))
       return postAction.updatePost(currentId, postData);
     } else {
       console.log(postData);
-      // dispatch(postAction.createPost(postData));
       return postAction.createPost(postData);
     }
   };
@@ -46,7 +43,7 @@ const Form = ({ currentId, setCurrentId }) => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">Create New Post</Typography>
+        <Typography variant="h6">{currentId ? `Edit Post` : `Create New Post`}</Typography>
         <TextField
           name="creator"
           variant="outlined"
