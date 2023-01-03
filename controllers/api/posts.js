@@ -11,7 +11,7 @@ module.exports = {
 
 async function getPosts(req, res) {
   try {
-    const postMessages = await PostMessage.find()
+    const postMessages = await PostMessage.find({})
     console.log(postMessages)
     res.status(200).json(postMessages)
   } catch (error) {
@@ -27,6 +27,7 @@ async function updatePost(req, res) {
 
 async function newPost(req, res) {
   const post = req.body
+  console.log(req.body)
   const newPost = await PostMessage.create(post)
   try {
     console.log(`hit`)
