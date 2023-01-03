@@ -15,6 +15,9 @@ import useStyles from "./styles.js";
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
 
+  const handleDelete = (e) => {
+    console.log(`${post._id} is hit`)
+  }
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -42,7 +45,7 @@ const Post = ({ post, setCurrentId }) => {
       <Typography className={classes.title} variant="h5" gutterBottom>{post.message}</Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary"onClick={() => {}}>
+        <Button size="small" color="primary"onClick={() => {handleDelete()}}>
             <DeleteIcon fontSize="small" />
             Delete
         </Button>
