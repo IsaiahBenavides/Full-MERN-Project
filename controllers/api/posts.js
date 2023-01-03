@@ -12,6 +12,7 @@ module.exports = {
 async function getPosts(req, res) {
   try {
     const postMessages = await PostMessage.find({}).sort('-updatedAt').exec()
+
     console.log(postMessages)
     res.status(200).json(postMessages)
   } catch (error) {

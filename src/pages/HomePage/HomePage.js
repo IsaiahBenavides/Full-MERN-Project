@@ -1,7 +1,7 @@
+import { useState } from "react";
 import Posts from "../../components/Posts/Posts.js";
 
 export default function HomePage({currentPosts, setCurrentPosts}) {
-
 
     return(
         <>
