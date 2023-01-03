@@ -9,13 +9,13 @@ import useStyles from "./styles.js";
 const Posts = ({ currentPosts, setCurrentPosts, setCurrentId }) => {
   const posts = useSelector((state) => state.posts);
 
-  const postCollection = postAction.getPosts();
   
   const classes = useStyles();
   
   useEffect(() => {
-    async function fetchCurrentPosts() {
-        await postCollection
+      async function fetchCurrentPosts() {
+        const postCollection = await postAction.getPosts();
+        // await postCollection
         setCurrentPosts(postCollection)
     }
     fetchCurrentPosts()
@@ -23,7 +23,7 @@ const Posts = ({ currentPosts, setCurrentPosts, setCurrentId }) => {
 
   async function handleGet(evt) {
     evt.preventDefault();
-    console.log(postCollection)
+    // console.log(postCollection)
     console.log(`hit`);
     try {
         
@@ -32,7 +32,7 @@ const Posts = ({ currentPosts, setCurrentPosts, setCurrentId }) => {
     }
   }
 
-  console.log(posts);
+//   console.log(postCollection);
 
   return !currentPosts.length ? (
     <>
@@ -46,7 +46,7 @@ const Posts = ({ currentPosts, setCurrentPosts, setCurrentId }) => {
       alignItems="stretch"
       spacing={3}
     >
-      {postCollection.map((post) => (
+      {currentPosts.map((post) => (
         <Grid key={post._id} item xs={12} sm={6}>
           <Post post={post} setCurrentId={setCurrentId} />
         </Grid>

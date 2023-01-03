@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as postAction from "../../utilities/posts-api";
 
 import useStyles from "./styles.js";
 
-const Form = ({ currentId, setCurrentId }) => {
+const Form = ({ postCollection, setCurrentPosts, currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
     title: "",
     message: "",
@@ -18,6 +18,7 @@ const Form = ({ currentId, setCurrentId }) => {
     currentId ? state.posts.find((p) => p._id === currentId) : null
   );
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (post) setPostData(post);
@@ -26,9 +27,11 @@ const Form = ({ currentId, setCurrentId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentId) {
+      dispatch(postAction.updatePost(currentId, postData))
       return postAction.updatePost(currentId, postData);
     } else {
       console.log(postData);
+      dispatch(postAction.createPost(postData));
       return postAction.createPost(postData);
     }
   };
