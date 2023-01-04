@@ -6,7 +6,7 @@ import * as postAction from "../../utilities/posts-api";
 
 import useStyles from "./styles.js";
 
-const Form = ({ postCollection, setCurrentPosts, currentId, setCurrentId }) => {
+const Form = ({ currentId }) => {
   const [postData, setPostData] = useState({
     title: "",
     message: "",
@@ -20,23 +20,37 @@ const Form = ({ postCollection, setCurrentPosts, currentId, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  
+
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (currentId) {
-      dispatch(postAction.updatePost(currentId, postData))
-      return postAction.updatePost(currentId, postData);
-    } else {
-      console.log(postData);
-      dispatch(postAction.createPost(postData));
-      return postAction.createPost(postData);
+    try {
+      if (currentId) {
+        dispatch(postAction.updatePost(currentId, postData))
+        await postAction.updatePost(currentId, postData);
+      } else {
+        console.log(postData);
+        dispatch(postAction.createPost(postData));
+        await postAction.createPost(postData);
+      }
+    } catch (error) {
+      console.log(error)
     }
+    // if (currentId) {
+    //   dispatch(postAction.updatePost(currentId, postData))
+    //   return postAction.updatePost(currentId, postData);
+    // } else {
+    //   console.log(postData);
+    //   dispatch(postAction.createPost(postData));
+    //   return postAction.createPost(postData);
+    // }
   };
 
-  const clear = () => {};
+  const clear = () => {console.log(currentId)};
 
   return (
     <Paper className={classes.paper}>
@@ -56,7 +70,7 @@ const Form = ({ postCollection, setCurrentPosts, currentId, setCurrentId }) => {
           onChange={(e) =>
             setPostData({ ...postData, creator: e.target.value })
           }
-        />
+        ></TextField>
         <TextField
           name="title"
           variant="outlined"
@@ -64,7 +78,7 @@ const Form = ({ postCollection, setCurrentPosts, currentId, setCurrentId }) => {
           fullWidth
           value={postData.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
-        />
+        ></TextField>
         <TextField
           name="message"
           variant="outlined"
@@ -74,7 +88,7 @@ const Form = ({ postCollection, setCurrentPosts, currentId, setCurrentId }) => {
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
           }
-        />
+        ></TextField>
         <TextField
           name="tags"
           variant="outlined"
@@ -82,7 +96,7 @@ const Form = ({ postCollection, setCurrentPosts, currentId, setCurrentId }) => {
           fullWidth
           value={postData.tags}
           onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
-        />
+        ></TextField>
         <div className={classes.fileInput}>
           <FileBase
             type="file"
@@ -100,7 +114,7 @@ const Form = ({ postCollection, setCurrentPosts, currentId, setCurrentId }) => {
           type="submit"
           fullWidth
         >
-          Submit
+          {currentId ? `Edit` : `New Post`}
         </Button>
         <Button
           variant="contained"

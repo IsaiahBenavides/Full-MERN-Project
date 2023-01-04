@@ -30,3 +30,13 @@ export const updatePost = (currentId, postData) => async (dispatch) => {
         console.log(error.message)
     }
 }
+
+export const deletePost = (currentId) => async (dispatch) => {
+    try {
+        const { data } = await postAction.deletePost(currentId)
+
+        dispatch({ type: 'DELETE', payload: data })
+    } catch (error) {
+        console.log(error.message)
+    }
+}

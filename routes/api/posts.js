@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const postsCtrl = require('../../controllers/api/posts')
 
-router.post('/createpost', postsCtrl.newPost)
-router.get('/createpost', postsCtrl.getPosts)
-router.patch('/updatepost', postsCtrl.updatePost)
-router.delete('/deletepost/:id', postsCtrl.deletePost)
+router.post('/', postsCtrl.newPost)
+router.get('/', postsCtrl.getPosts)
+router.patch('/:id', postsCtrl.updatePost)
+router.delete('/:id', postsCtrl.deletePost)
 
 module.exports = router;

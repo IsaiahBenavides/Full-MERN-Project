@@ -6,26 +6,32 @@ import {
   CardMedia,
   Button,
   Typography,
+  Link,
 } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
-import * as postAction from "../../../utilities/posts-api"
+import * as postAction from "../../../utilities/posts-api";
 
 import useStyles from "./styles.js";
-const Post = ({ post, setCurrentId }) => {
+const Post = ({ post, currentId, setCurrentId }) => {
   const classes = useStyles();
 
-  const handleDelete = async (e) => {
-    console.log(`${post._id} is hit`)
+  const handleEdit = async (e) => {
+    console.log(currentId);
+    await setCurrentId(post._id);
+  };
 
-    // postAction.deletePost(post._id)
-    const response = await fetch(`/api/posts/deletepost/${post._id}`, {method: "DELETE"})
-    const json = response.json()
-    if(response.ok) {
-      console.log(`response is hit`)
-    }
-  }
+  const handleDelete = async (e) => {
+    console.log(`${post._id} is hit`);
+
+    await postAction.deletePost(post._id);
+    // const response = await fetch(`/api/posts/deletepost/${post._id}`, {method: "DELETE"})
+    // const json = response.json()
+    // if(response.ok) {
+    //   console.log(`response is hit`)
+    // }
+  };
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -40,9 +46,17 @@ const Post = ({ post, setCurrentId }) => {
         </Typography>
       </div>
       <div className={classes.overlay2}>
-        <Button style={{ color: "white" }} size="small" onClick={() => setCurrentId(post._id)}>
-          <MoreHorizIcon fontSize="medium" />
-        </Button>
+        <Link to={`/editpost/${post._id}`} >
+          <Button
+            style={{ color: "white" }}
+            size="small"
+            onClick={() => {
+              handleEdit();
+            }}
+            >
+            <MoreHorizIcon fontSize="medium" />
+          </Button>
+            </Link>
       </div>
       <div className={classes.details}>
         <Typography variant="body2" color="textSecondary">
@@ -50,12 +64,20 @@ const Post = ({ post, setCurrentId }) => {
         </Typography>
       </div>
       <CardContent>
-      <Typography className={classes.title} variant="h5" gutterBottom>{post.message}</Typography>
+        <Typography className={classes.title} variant="h5" gutterBottom>
+          {post.message}
+        </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary"onClick={() => {handleDelete()}}>
-            <DeleteIcon fontSize="small" />
-            Delete
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {
+            handleDelete();
+          }}
+        >
+          <DeleteIcon fontSize="small" />
+          Delete
         </Button>
       </CardActions>
     </Card>

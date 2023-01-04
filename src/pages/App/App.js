@@ -9,6 +9,7 @@ import AuthPage from "../AuthPage/AuthPage.js";
 import HomePage from "../HomePage/HomePage.js";
 import NavBar from "../../components/NavBar.js";
 import CreatePost from "../CreatePost/CreatePost.js";
+import PostPage from "../PostPage/PostPage";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -28,8 +29,9 @@ function App() {
         <>
         <NavBar name={user.name} setUser={setUser} />
           <Routes>
-            <Route path="/home" element={<HomePage setCurrentId={setCurrentId} currentPosts={currentPosts} setCurrentPosts={setCurrentPosts} />} />
+            <Route path="/home" element={<HomePage currentId={currentId} setCurrentId={setCurrentId} currentPosts={currentPosts} setCurrentPosts={setCurrentPosts} />} />
             <Route path="/createpost" element={<CreatePost currentId={currentId} setCurrentId={setCurrentId} />} />
+            <Route path="/editpost/:id" element={<PostPage currentId={currentId} setCurrentId={setCurrentId} />} />
           </Routes>
         </>
       ) : (

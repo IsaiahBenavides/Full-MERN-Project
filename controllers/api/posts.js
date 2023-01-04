@@ -10,9 +10,9 @@ module.exports = {
     deletePost,
 }
 
-function deletePost(req, res) {
+async function deletePost(req, res) {
   try {
-    const targetPost = PostMessage.findByIdAndDelete(req)
+    const targetPost = await PostMessage.findByIdAndDelete(req.params.id)
     res.status(200).json(targetPost)
   } catch (error) {
     res.status(400).json(error);
@@ -30,9 +30,16 @@ async function getPosts(req, res) {
 }
 
 async function updatePost(req, res) {
-  return(
-    console.log('hit')
-  )
+  try {
+    const { id: _id } = req.params
+    console.log(_id)
+    const post = req.body
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, {new:true})
+    // console.log(targetPost)
+    res.status(200).json(updatedPost)
+  } catch (error) {
+    res.status(400).json(error);
+  }
 }
 
 async function newPost(req, res) {
