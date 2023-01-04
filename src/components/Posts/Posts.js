@@ -9,16 +9,15 @@ import useStyles from "./styles.js";
 const Posts = ({ currentPosts, setCurrentPosts, currentId, setCurrentId }) => {
   const posts = useSelector((state) => state.posts);
 
-  
   const classes = useStyles();
-  
+
   useEffect(() => {
-      async function fetchCurrentPosts() {
-        const postCollection = await postAction.getPosts();
-        // await postCollection
-        setCurrentPosts(postCollection)
+    async function fetchCurrentPosts() {
+      const postCollection = await postAction.getPosts();
+      // await postCollection
+      setCurrentPosts(postCollection);
     }
-    fetchCurrentPosts()
+    fetchCurrentPosts();
   }, []);
 
   async function handleGet(evt) {
@@ -26,13 +25,12 @@ const Posts = ({ currentPosts, setCurrentPosts, currentId, setCurrentId }) => {
     // console.log(postCollection)
     console.log(`hit`);
     try {
-        
     } catch (error) {
       console.log(error);
     }
   }
 
-//   console.log(postCollection);
+  //   console.log(postCollection);
 
   return !currentPosts.length ? (
     <>
@@ -40,18 +38,24 @@ const Posts = ({ currentPosts, setCurrentPosts, currentId, setCurrentId }) => {
       <Button onClick={handleGet}>Refresh</Button>
     </>
   ) : (
-    <Grid
-      className={classes.container}
-      container
-      alignItems="stretch"
-      spacing={3}
-    >
-      {currentPosts.map((post) => (
-        <Grid key={post._id} item xs={12} sm={6}>
-          <Post post={post} setCurrentId={setCurrentId} currentId={currentId} />
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      <Grid
+        className={classes.container}
+        container
+        alignItems="stretch"
+        spacing={3}
+      >
+        {currentPosts.map((post) => (
+          <Grid key={post._id} item xs={12} sm={6}>
+            <Post
+              post={post}
+              setCurrentId={setCurrentId}
+              currentId={currentId}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </>
   );
 };
 

@@ -4,7 +4,7 @@ const postsCtrl = require('../../controllers/api/posts')
 
 router.post('/', postsCtrl.newPost)
 router.get('/', postsCtrl.getPosts)
-router.patch('/:id', postsCtrl.updatePost)
+router.put('/:id', postsCtrl.updatePost)
 router.delete('/:id', postsCtrl.deletePost)
 
 module.exports = router;

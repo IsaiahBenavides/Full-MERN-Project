@@ -35,7 +35,7 @@ async function updatePost(req, res) {
     console.log(_id)
     const post = req.body
     const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, {new:true})
-    // console.log(targetPost)
+    console.log(updatedPost)
     res.status(200).json(updatedPost)
   } catch (error) {
     res.status(400).json(error);

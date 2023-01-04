@@ -5,8 +5,8 @@ export function createPost(postData) {
     return sendRequest(`${BASE_URL}`, "POST", postData)
 }
 
-export function updatePost(postData) {
-    return sendRequest(`${BASE_URL}`, "PUT", postData)
+export function updatePost(currentId, postData) {
+    return sendRequest(`${BASE_URL}/${currentId}`, "PUT", postData)
 }
 
 export function getPosts() {
