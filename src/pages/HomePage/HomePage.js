@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Posts from "../../components/Posts/Posts.js";
 import PostForm from "../../components/PostForm/PostForm.js"
-import { Container } from "@material-ui/core";
+import { Button, ButtonGroup, Container } from "@material-ui/core";
 
 export default function HomePage({
   currentPosts,
