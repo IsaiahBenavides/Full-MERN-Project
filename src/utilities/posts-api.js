@@ -12,3 +12,7 @@ export function updatePost(currentId, postData) {
 export function getPosts() {
     return sendRequest(`${BASE_URL}/createpost`, "GET")
 }
+
+export function deletePost(currentId) {
+    return sendRequest(`${BASE_URL}/deletepost/${currentId}`, "DELETE")
+} 

@@ -10,13 +10,21 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
+import * as postAction from "../../../utilities/posts-api"
 
 import useStyles from "./styles.js";
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
 
-  const handleDelete = (e) => {
+  const handleDelete = async (e) => {
     console.log(`${post._id} is hit`)
+
+    // postAction.deletePost(post._id)
+    const response = await fetch(`/api/posts/deletepost/${post._id}`, {method: "DELETE"})
+    const json = response.json()
+    if(response.ok) {
+      console.log(`response is hit`)
+    }
   }
   return (
     <Card className={classes.card}>

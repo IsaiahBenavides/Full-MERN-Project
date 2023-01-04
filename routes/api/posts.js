@@ -5,6 +5,6 @@ const postsCtrl = require('../../controllers/api/posts')
 router.post('/createpost', postsCtrl.newPost)
 router.get('/createpost', postsCtrl.getPosts)
 router.patch('/updatepost', postsCtrl.updatePost)
-router.delete('/')
+router.delete('/deletepost/:id', postsCtrl.deletePost)
 
 module.exports = router;
