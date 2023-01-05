@@ -7,7 +7,7 @@ import { getUser } from '../../utilities/users-service.js'
 
 import AuthPage from "../AuthPage/AuthPage.js";
 import HomePage from "../HomePage/HomePage.js";
-import NavBar from "../../components/NavBar.js";
+import NavBar from "../../components/NavBar/NavBar.js";
 import CreatePost from "../CreatePost/CreatePost.js";
 import PostPage from "../PostPage/PostPage";
 

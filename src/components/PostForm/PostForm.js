@@ -6,7 +6,7 @@ import * as postAction from "../../utilities/posts-api";
 
 import useStyles from "./styles.js";
 
-const Form = ({ currentId }) => {
+const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
     title: "",
     message: "",
@@ -50,7 +50,7 @@ const Form = ({ currentId }) => {
     // }
   };
 
-  const clear = () => {console.log(currentId)};
+  const clear = () => {setCurrentId(null)};
 
   return (
     <Paper className={classes.paper}>
