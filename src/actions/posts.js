@@ -25,7 +25,7 @@ export const updatePost = (currentId, postData) => async (dispatch) => {
     try {
         const { data } = await postAction.updatePost(currentId, postData)
 
-        dispatch({ type: 'POST', payload: data })
+        dispatch({ type: 'PUT', payload: data })
     } catch (error) {
         console.log(error.message)
     }
